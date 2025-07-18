@@ -24,7 +24,7 @@ jobs:
             if (match) {
               const ruleName = match[1];
 
-              const response = github.rest.pulls.get({
+              const response = await github.rest.pulls.get({
                 owner: 'corwin-gs',
                 repo: 'actions',
                 pull_number: prNumber
