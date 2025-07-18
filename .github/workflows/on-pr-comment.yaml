@@ -7,7 +7,7 @@ jobs:
   on_pr_comment:
     name: Trigger message
     runs-on: ubuntu-latest
-    if: ${{ github.event.issue.pull_request && startsWith('!test', github.event.issue_comment.comment.body) }}
+    if: ${{ github.event.issue.pull_request && startsWith('!test', github.event.comment.body) }}
     steps:
       - name: Trigger workflow
         uses: actions/github-script@v7
@@ -44,5 +44,5 @@ jobs:
               });
             }
         env:
-          COMMENT: ${{ github.event.issue_comment.comment.body }}
-          PR_NUMBER: ${{ github.event.issue.id }}
+          COMMENT: ${{ github.event.comment.body }}
+          PR_NUMBER: ${{ github.event.issue.number }}
