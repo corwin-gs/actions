@@ -24,11 +24,15 @@ jobs:
             if (match) {
               const ruleName = match[1];
 
-              const { data: pullRequest } = github.rest.pulls.get({
+              const response = github.rest.pulls.get({
                 owner: 'corwin-gs',
                 repo: 'actions',
                 pull_number: prNumber
               });
+
+              const { data: pullRequest } = response;
+
+              console.log(pullRequest, response);
 
               const thisBranchNameSlug = pullRequest.head.ref.replace(/[^a-zA-Z0-9]/g, '-').replace(/^-*/, '').replace(/-*$/, '');
 
